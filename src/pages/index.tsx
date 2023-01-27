@@ -23,7 +23,6 @@ export default function Home({ pokemons }: { pokemons: Pokemon[] }) {
 
         <div className={`${styles.center} ${inter.className}`}>
           <h2 className={`${styles.textWhite} ${styles.leading6} ${styles.fontExtrabold}`} >List of Pokemons</h2>
-
         </div>
 
         <div className={styles.grid}>
@@ -32,7 +31,7 @@ export default function Home({ pokemons }: { pokemons: Pokemon[] }) {
           {pokemons.length === 0 && <p>No hay articulos ...</p>}
           {pokemons.length > 0 && pokemons.map((pokemon, index) => (
             <div key={index}>
-              <CardBoxOldDesign name={pokemon.name} url={pokemon.url} />
+              <CardBoxOldDesign name={pokemon.name} />
             </div>
           ))}
 

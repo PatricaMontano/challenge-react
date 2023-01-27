@@ -10,7 +10,7 @@ export default function Creator({name=''}) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{name}
+              By {name}
               <Image
                 src="/deuna-logo.svg"
                 alt="DEUNA"
