@@ -1,17 +1,17 @@
 import styles from '@/styles/Home.module.css'
 import Image from 'next/image'
 
-export default function Creator({name=''}) {
+export default function Creator() {
     return (
-        <div className={styles.description}>
+        <div className={styles.autor}>
           <div>
             <a
               href="https://github.com/PatricaMontano"
               target="_blank"
               rel="noopener noreferrer"
             >
-              By {name}
-              <Image
+              By {process.env.NEXT_PUBLIC_AUTOR}
+              <Image  
                 src="/deuna-logo.svg"
                 alt="DEUNA"
                 className={styles.vercelLogo}

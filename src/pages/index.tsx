@@ -2,57 +2,66 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import CardBoxOldDesign from './Component/CardBoxOldDesign'
+import CardBoxOldDesign from './Component/CardBoxEpisodes'
+import CardBox from './Component/CardBox'
 import Creator from './Component/Creator'
 
 const inter = Inter({ subsets: ['latin'] })
 
-type Pokemon = {
+type DataRick = {
+  id:number,
+  name: string,
+  status:string,
+  species: string,
+  gender:string,
+  origin:Origin
+  location:Location,
+  image: string,
+  episode:string[],
+  url: string,
+}
+type Origin = {
   name: string,
   url: string
 }
 
+type Location = {
+  name: string
+  url: string
+}
 
-export default function Home({ pokemons }: { pokemons: Pokemon[] }) {
+
+export default function Home({ dataRick }: { dataRick: DataRick[] }) {
   return (
     <>
-
-      <main className={styles.main}>
         
-        <Creator name='Johanna Montaño' />
+        <Creator/>
 
-        <div className={`${styles.center} ${inter.className}`}>
-          <h2 className={`${styles.textWhite} ${styles.leading6} ${styles.fontExtrabold}`} >List of Pokemons</h2>
+        <div className={`${styles.title} ${inter.className}`}>
+          <h2 className={`${styles.text}`}>Characters {process.env.NEXT_PUBLIC_TITLE_PAGE}</h2>
         </div>
 
-        <div className={styles.grid}>
 
-
-          {pokemons.length === 0 && <p>No hay articulos ...</p>}
-          {pokemons.length > 0 && pokemons.map((pokemon, index) => (
+        <div className={styles.container}>
+          {dataRick.length === 0 && <p>No hay personajes ...</p>}
+          {dataRick.length > 0 && dataRick.map((character, index) => (
             <div key={index}>
-              <CardBoxOldDesign name={pokemon.name} />
+              <CardBox dataRick={character}/>
             </div>
           ))}
-
-
         </div>
-
-
-
-      </main>
     </>
   )
 }
 
 
 export async function getServerSideProps() {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon/')
+  const response = await fetch('https://rickandmortyapi.com/api/character')
   const data = await response.json()
-  var pokemons = data.results;
+  var dataRick = data.results;
   return {
     props: {
-      pokemons
+      dataRick
     }
   }
 }
