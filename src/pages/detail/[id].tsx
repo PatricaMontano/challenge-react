@@ -77,7 +77,7 @@ export async function getServerSideProps(context: Context) {
     const data = await response.json()
 
     var dataCharacter =  data.results;
-    var aux =  dataCharacter[id].episode;
+    var aux =  dataCharacter[id-1].episode;
 
     var episodes: Array<Episode> = [];
 
