@@ -5,6 +5,11 @@ import styles from '@/styles/Home.module.css'
 import CardBoxOldDesign from './Component/CardBoxEpisodes'
 import CardBox from './Component/CardBox'
 import Creator from './Component/Creator'
+import Router from 'next/router';
+import Loader from './Component/Loader'
+import React, { useState } from 'react'
+
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,16 +37,37 @@ type Location = {
 
 
 export default function Home({ dataRick }: { dataRick: DataRick[] }) {
+
+  const [loading, setLoading] = useState(false);
+
+  Router.events.on("routeChangeStart", (url) => {
+    console.log("Router is changing....");
+    setLoading(true);
+  });
+
+  Router.events.on("routeChangeComplete", (url) => {
+    console.log("Router is complete....");
+    setLoading(false);
+  });
   return (
     <>
         
         <Creator/>
 
         <div className={`${styles.title} ${inter.className}`}>
-          <h2 className={`${styles.text}`}>Characters {process.env.NEXT_PUBLIC_TITLE_PAGE}</h2>
+          <h2 >Characters {process.env.NEXT_PUBLIC_TITLE_PAGE}</h2>
         </div>
 
+        {loading && 
+        <div className={styles.container}>
+          <div >
+            <Loader/>
+          </div>
+          
+        </div>
+        }
 
+        {!loading && 
         <div className={styles.container}>
           {dataRick.length === 0 && <p>No hay personajes ...</p>}
           {dataRick.length > 0 && dataRick.map((character, index) => (
@@ -50,6 +76,7 @@ export default function Home({ dataRick }: { dataRick: DataRick[] }) {
             </div>
           ))}
         </div>
+        }
     </>
   )
 }

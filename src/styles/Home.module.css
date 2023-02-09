@@ -128,10 +128,16 @@ body .container .card .box .content a:hover {
 
 .title {
   text-align: center;
-  
   top: 50px;
   margin: 45px;
-  width: 100%;
+  width: 90%;
 
+}
+
+.loaderContainer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 

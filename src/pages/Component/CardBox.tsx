@@ -8,7 +8,7 @@ import Image from 'next/image'
 const inter = Inter({ subsets: ['latin'] })
 
 type DataRick = {
-    id:number,
+    id: number,
     name: string,
     status: string,
     species: string,
@@ -33,7 +33,7 @@ export default function CardBox({ dataRick }: { dataRick: DataRick }) {
     return (
         <div className={styles.card}>
             <div className={styles.box}>
-                <div className={styles.content}>
+                <div className={styles.content} data-cy="card-rick-morty">
                     <Image
                         alt="DEUNA"
                         src={dataRick.image}
@@ -47,7 +47,7 @@ export default function CardBox({ dataRick }: { dataRick: DataRick }) {
                     <p>Specie: {dataRick.species}</p>
                     <p>Gender: {dataRick.gender}</p>
 
-                    <a type="button" onClick={() => Router.push('/detail/' + dataRick.id )} >View Episodes</a>
+                    <a type="button" data-cy="btn-rick-morty" onClick={() => Router.push('/detail/' + dataRick.id)}>View Episodes</a>
                 </div>
             </div>
         </div>

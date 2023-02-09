@@ -16,9 +16,9 @@ type Episode = {
 
 export default function CardBox({ episodes }: { episodes: Episode }) {
     return (
-        <div className={styles.card}>
+        <div className={styles.card} data-cy="card-episode-rick-morty">
             <div className={styles.box}>
-                <div className={styles.content}>
+                <div className={styles.content} >
                     <Image
                         alt="DEUNA"
                         src={"/rick-episodes.jpg"}
