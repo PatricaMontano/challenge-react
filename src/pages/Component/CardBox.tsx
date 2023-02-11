@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import styles from '@/styles/Home.module.css'
 import { Inter } from '@next/font/google'
 import Router from 'next/router'

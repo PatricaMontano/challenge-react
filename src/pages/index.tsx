@@ -1,8 +1,5 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import CardBoxOldDesign from './Component/CardBoxEpisodes'
 import CardBox from './Component/CardBox'
 import Creator from './Component/Creator'
 import Router from 'next/router';
@@ -49,6 +46,8 @@ export default function Home({ dataRick }: { dataRick: DataRick[] }) {
     console.log("Router is complete....");
     setLoading(false);
   });
+
+  
   return (
     <>
         

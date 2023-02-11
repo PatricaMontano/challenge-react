@@ -79,13 +79,14 @@ export async function getServerSideProps(context: Context) {
     var dataCharacter =  data.results;
     var aux =  dataCharacter[id-1].episode;
 
-    var episodes: Array<Episode> = [];
+    var consult = "";
 
     for (let episode of aux) {
-        let auxResponse = await fetch(episode);
-        let auxData = await auxResponse.json()
-        episodes.push(auxData);
+        consult += episode.substring(episode.lastIndexOf('/')+1,episode.length)+",";
     }
+
+    let auxResponse = await fetch("https://rickandmortyapi.com/api/episode/"+consult);
+    let episodes = await auxResponse.json()
 
     return {
         props: {
